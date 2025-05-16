@@ -30,7 +30,7 @@ router.post('/like-service', async (req, res) => {
             const newLike = new LikedService({ email, serviceName, serviceType});
             await newLike.save();
             console.log("Service liked");
-            return res.json({ liked: true, message: 'Service liked' });
+            return res.json({ liked: true, message: 'Service liked Successfully' });
         }
     } catch (error) {
         console.error('Error liking/unliking service:', error);
