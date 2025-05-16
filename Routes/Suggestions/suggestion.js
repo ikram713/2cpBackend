@@ -77,7 +77,7 @@ router.get('/suggestions', async (req, res) => {
 
 
                 if (!likedServiceDetails) {
-                    console.log("liked service no found in db ");
+                    console.log("no liked service found on data base ");
                     continue
                 };
 
