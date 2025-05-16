@@ -127,7 +127,7 @@ router.get('/Search/:key', async (req, res) => {
 
         // Check if any results were found
         if (Object.keys(filteredResults).length === 0) {
-            return res.status(404).send({ message: "No results found." });
+            return res.status(404).send({ message: "No results found on dataBase." });
         }
 
         // Send the filtered results

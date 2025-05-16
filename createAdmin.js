@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGO_URI)
         });
 
         await admin.save();
-        console.log("✅ Admin created successfully!");
+        console.log("✅ Admin created successfully! and added do dataBase");
         mongoose.connection.close();
     })
     .catch(err => console.error("❌ MongoDB connection error:", err));
