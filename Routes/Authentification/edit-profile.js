@@ -20,7 +20,7 @@ router.put('/edit-profile',async (req, res) => {
         await user.save();
 
  // Send a success response
-    res.status(200).json({ message: 'Profile updated successfully', user });
+    res.status(200).json({ message: 'Profile updated successfully   check to virify ', user });
 } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });
