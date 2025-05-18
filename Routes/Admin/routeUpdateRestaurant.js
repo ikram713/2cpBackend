@@ -16,13 +16,13 @@ router.patch('/UpdateRestaurant',async (req,res)=>{
     }
     else{
     await RestaurantSchema.updateOne({ Name,Location},{ $set:{CuisineType,WorkingTime,Features}});//Update a single field in a document without altering others.
-    res.send("Restaurant updated successfully");
+    res.send("Restaurant Location updated successfully");
     }
     
 
 } catch (error) {
     console.error(error);
-    res.status(500).send('Error updating Restaurant');
+    res.status(500).send('Error updating Restaurant Location');
 }
 
 })
