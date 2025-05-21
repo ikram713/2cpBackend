@@ -1,12 +1,11 @@
-
 const express = require('express');
 const router = express.Router();
-const medicalAssistants = require('../../Schema/MedicalAssistant.js');
+const MedicalAssistant = require('../../Schema/MedicalAssistant.js');
 
 
 router.get('/medicalAssistants', async (req, res) => {
     try {
-        const data = await medicalAssistants.find({}, { Name: 1, ImgURL: 1, workingHours: 1, _id: 0 }); // project only Name and ImgURL
+        const data = await MedicalAssistant.find({}, { Name: 1, ImgURL: 1, workingHours: 1, _id: 0 }); // project only Name and ImgURL
         res.status(200).json(data);
     } catch (err) {
         console.error('Error fetching medicalAssistants:', err);
@@ -14,44 +13,41 @@ router.get('/medicalAssistants', async (req, res) => {
     }
 });
 
+// Helper function to get data by type
+const getMedicalAssistantsByType = async (type, res) => {
+    try { 
+        const data = await MedicalAssistant.find(
+            { Type: type },
+            { Name: 1, ImgURL: 1, workingHours: 1, Type: 1, _id: 0 }
+        );
+        res.status(200).json(data);
+    } catch (err) {
+        console.error(`Error fetching ${type} data:`, err);
+        res.status(500).json({ message: `Failed to fetch ${type} data.` });
+    }
+};
+
+
+
+// Route: Get all Doctors
+router.get('/medicalAssistants/doctors', async (req, res) => {
+    await getMedicalAssistantsByType('Doctor', res);
+});
+
+// Route: Get all Clinics
+router.get('/medicalAssistants/clinics', async (req, res) => {
+    await getMedicalAssistantsByType('Clinique', res);
+});
+
+// Route: Get all Hospitals
+router.get('/medicalAssistants/hospitals', async (req, res) => {
+    await getMedicalAssistantsByType('Hospital', res);
+});
+
+// Route: Get all Pharmacies
+router.get('/medicalAssistants/pharmacies', async (req, res) => {
+    await getMedicalAssistantsByType('Pharmacy', res);
+});
+
 module.exports = router;
 
-/**
- * @swagger
- * /medicalAssistants:
- *   get:
- *     tags:
- *       - Display Services
- *     summary: Get all medical assistants
- *     description: Returns a list of medical assistants with their names, image URLs, and working hours
- *     responses:
- *       200:
- *         description: Successfully retrieved medical assistants
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   Name:
- *                     type: string
- *                     example: "City Medical Center"
- *                   ImgURL:
- *                     type: string
- *                     format: uri
- *                     example: "https://example.com/medical-center.jpg"
- *                   workingHours:
- *                     type: string
- *                     example: "Mon-Fri: 8:00 AM - 5:00 PM"
- *       500:
- *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: "Failed to fetch medical assistants data"
- */

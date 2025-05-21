@@ -1,7 +1,7 @@
 
 const express = require('express');
 const router = express.Router();
-const groceries = require('../../Schema/administrationSchema.js');
+const groceries = require('../../Schema/GrocerieSchema.js');
 
 
 router.get('/groceries', async (req, res) => {

@@ -1,7 +1,7 @@
 
 const express = require('express');
 const router = express.Router();
-const privateSchools = require('../../Schema/administrationSchema.js');
+const privateSchools = require('../../Schema/PrivateSchoolSchema.js');
 
 
 router.get('/privateSchools', async (req, res) => {

@@ -27,7 +27,7 @@ const DeleteService = require('./Routes/Admin/DeleteService.js');
 
   //Display
   const displayRestaurants = require('./Routes/Display/displayRestaurants.js');
-  const displayCoffeeShops = require('./Routes/Display/displayCoffeeShops.js');
+
   const displayAdministration = require('./Routes/Display/displayAdministration.js');
   const displayPrivateSchool = require('./Routes/Display/displayPrivateSchools.js');
   const displayGrocerie = require('./Routes/Display/displayGroceries.js');
@@ -134,7 +134,7 @@ app.use('/admin',updateRestaurant);
 app.use('/',DisplaySearchHistory);
 app.use('/',SearchGlobal);
 app.use('/',displayRestaurants);
-app.use('/',displayCoffeeShops);
+
 app.use('/',displayMedicalAss);
 app.use('/',displayAdministration);
 app.use('/',displayGrocerie);
