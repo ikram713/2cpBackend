@@ -9,8 +9,8 @@ require("./Config/PassportConfig");
 
 
 ///Authentification Routes 
-const AdminRoute = require('./Routes/Authentification/AdminRoute');
-const AuthRoutes = require('./Routes/Authentification/AuthRoutes');
+const AdminRoute = require('./Routes/Authentication/AdminRoute');
+const AuthRoutes = require('./Routes/Authentication/AuthRoutes');
 
 //Admin Routes 
 
@@ -36,10 +36,10 @@ const DeleteService = require('./Routes/Admin/DeleteService.js');
 
 
   //Edit Profile
-  const editProfile = require('./Routes/Authentification/edit-profile.js');
+  const editProfile = require('./Routes/Authentication/edit-profile.js');
 
   //pofile information
-  const profileInformation = require('./Routes/Authentification/profileInformation.js');
+  const profileInformation = require('./Routes/Authentication/profileInformation.js');
 
 //Rating Routes 
   const Rate = require('./Routes/Rating/Rate.js');
